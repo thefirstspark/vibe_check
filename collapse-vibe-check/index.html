@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◈ THE COLLAPSE VIBE CHECK ◈ Reality Decoder v.2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-magenta: #ff00ff;
+            --neon-lime: #39ff14;
+            --neon-purple: #b100ff;
+            --neon-orange: #ff6600;
+            --dark-void: #0a0e27;
+            --grid-dark: #1a1f3a;
+            --grid-light: #252d4a;
+            --text-primary: #e0e6ff;
+            --text-secondary: #a0afd9;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark-void) 0%, #16213e 100%);
+            color: var(--text-primary);
+            font-family: 'IBM Plex Mono', monospace;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, .05) 25%, rgba(0, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, .05) 75%, rgba(0, 255, 255, .05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, .05) 25%, rgba(0, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, .05) 75%, rgba(0, 255, 255, .05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+            animation: gridDrift 20s linear infinite;
+        }
+
+        @keyframes gridDrift {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Glitch effect text */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .glitch {
+            animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-magenta);
+            color: var(--neon-cyan);
+        }
+
+        .header .subtitle {
+            font-size: 0.9em;
+            color: var(--neon-magenta);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--neon-magenta);
+        }
+
+        .header .version {
+            font-size: 0.75em;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        /* Sacred geometry divider */
+        .divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            margin: 20px 0;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        /* Screen system */
+        .screen {
+            display: none;
+            opacity: 0;
+            animation: fadeInScreen 0.6s ease-out forwards;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeInScreen {
+            from {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Card styling */
+        .card {
+            background: rgba(26, 31, 58, 0.8);
+            border: 1px solid var(--neon-cyan);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 0;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .card.warning {
+            border-color: var(--neon-orange);
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.3), inset 0 0 20px rgba(255, 102, 0, 0.05);
+        }
+
+        .card.alert {
+            border-color: var(--neon-magenta);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3), inset 0 0 20px rgba(255, 0, 255, 0.05);
+        }
+
+        /* Input area */
+        .input-area {
+            position: relative;
+            z-index: 1;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            color: var(--neon-lime);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 140px;
+            background: rgba(10, 14, 39, 0.9);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-lime);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95em;
+            padding: 15px;
+            border-radius: 0;
+            resize: vertical;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2) inset;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5) inset, 0 0 20px rgba(0, 255, 255, 0.3);
+            border-color: var(--neon-magenta);
+        }
+
+        textarea::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-cyan);
+            z-index: -1;
+            transition: left 0.3s ease;
+        }
+
+        .btn:hover {
+            color: var(--dark-void);
+            text-shadow: 0 0 10px var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn.secondary {
+            border-color: var(--neon-magenta);
+            color: var(--neon-magenta);
+        }
+
+        .btn.secondary::before {
+            background: var(--neon-magenta);
+        }
+
+        .btn.secondary:hover {
+            color: var(--dark-void);
+        }
+
+        /* Question blocks */
+        .question-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .question-block h3 {
+            grid-column: 1 / -1;
+            color: var(--neon-lime);
+            margin-bottom: 10px;
+            font-size: 1em;
+            letter-spacing: 1px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            background: rgba(37, 45, 74, 0.6);
+            border: 1px solid var(--text-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .option:hover {
+            border-color: var(--neon-cyan);
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .option.selected {
+            border-color: var(--neon-magenta);
+            background: rgba(255, 0, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+            color: var(--neon-magenta);
+        }
+
+        /* Score display */
+        .score-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .score-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(37, 45, 74, 0.8);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 0;
+        }
+
+        .score-item.active {
+            border-color: var(--neon-magenta);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+        }
+
+        .score-label {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .score-value {
+            font-size: 2em;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-lime);
+            text-shadow: 0 0 10px var(--neon-lime);
+        }
+
+        /* Oracle output */
+        .oracle-box {
+            background: rgba(10, 14, 39, 0.95);
+            border: 2px solid var(--neon-magenta);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 0;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.4), inset 0 0 30px rgba(255, 0, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .oracle-box::before {
+            content: '◈';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 1.5em;
+            color: var(--neon-magenta);
+            opacity: 0.3;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .oracle-box::after {
+            content: '◈';
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            color: var(--neon-magenta);
+            opacity: 0.3;
+            animation: pulse 2s ease-in-out infinite 1s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .oracle-label {
+            font-size: 0.75em;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .oracle-title {
+            font-size: 1.8em;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-magenta);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px var(--neon-magenta);
+            letter-spacing: 2px;
+        }
+
+        .oracle-text {
+            font-size: 0.95em;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .oracle-action {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 0, 255, 0.3);
+            font-size: 0.9em;
+            color: var(--neon-lime);
+            font-style: italic;
+        }
+
+        /* Level indicators */
+        .level-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border: 1px solid currentColor;
+            border-radius: 0;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 10px;
+        }
+
+        .level-0 { color: var(--neon-lime); }
+        .level-1 { color: #ffff00; }
+        .level-2 { color: #ff9900; }
+        .level-3 { color: #ff3333; }
+        .level-4 { color: var(--neon-magenta); }
+
+        /* Progress bar */
+        .progress {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 0, 255, 0.2);
+            margin: 20px 0;
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--neon-magenta);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        .footer a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            text-shadow: 0 0 5px var(--neon-cyan);
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        /* Copy button */
+        .copy-btn {
+            font-size: 0.8em;
+            padding: 8px 15px;
+            margin-left: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .question-block {
+                grid-template-columns: 1fr;
+            }
+
+            .score-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .btn {
+                width: 100%;
+                margin-top: 15px;
+            }
+        }
+
+        /* Loading animation */
+        .loader {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--neon-cyan);
+            margin-right: 8px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .loader:nth-child(2) { animation-delay: 0.2s; }
+        .loader:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { opacity: 0.3; }
+            40% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="subtitle">⚡ CONSCIOUSNESS PROTOCOL ⚡</div>
+            <h1>THE COLLAPSE<br>VIBE CHECK</h1>
+            <div class="divider"></div>
+            <div class="version">◈ REALITY DECODER v.2025 ◈</div>
+        </div>
+
+        <!-- Screen 1: Intro -->
+        <div class="screen active" id="screen-intro">
+            <div class="card">
+                <h2 style="color: var(--neon-cyan); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Is This a Glitch... or THE Glitch?</h2>
+                <p style="margin-bottom: 20px;">You're about to decode reality. When systems fail, patterns emerge. When patterns cascade, timelines shift.</p>
+                <p style="margin-bottom: 20px;">Feed this decoder a headline. It will show you whether we're watching local noise or structural breakdown.</p>
+                <p style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 30px;">This is consciousness work. Simulation literacy. The ability to read the code.</p>
+                <button class="btn" onclick="moveToScreen('screen-input')">INITIALIZE DECODER</button>
+            </div>
+        </div>
+
+        <!-- Screen 2: Input -->
+        <div class="screen" id="screen-input">
+            <div class="card">
+                <h2 style="color: var(--neon-cyan); margin-bottom: 20px; font-family: 'Orbitron', sans-serif;">FEED THE ORACLE</h2>
+                <div class="input-area">
+                    <label class="input-label">Paste the headline or event:</label>
+                    <textarea id="headlineInput" placeholder="Example: 'National power grid goes down for 8 hours across 5 states'
+
+Or: 'Banks offline + cell networks down simultaneously'
+
+Or: 'This is the third major outage this month'"></textarea>
+                </div>
+                <button class="btn" onclick="validateInput()">DECODE EVENT</button>
+                <button class="btn secondary" onclick="moveToScreen('screen-intro')">BACK</button>
+            </div>
+        </div>
+
+        <!-- Screen 3: Scoring -->
+        <div class="screen" id="screen-scoring">
+            <div class="card">
+                <h2 style="color: var(--neon-lime); margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">COLLAPSE SCORE BUILDER</h2>
+                <p style="font-size: 0.9em; color: var(--text-secondary); margin-bottom: 20px;">Select which systems are affected. Watch the score build.</p>
+
+                <div style="background: rgba(37, 45, 74, 0.6); padding: 15px; margin-bottom: 25px; border-left: 3px solid var(--neon-lime);">
+                    <p style="font-size: 0.85em; color: var(--neon-lime); margin-bottom: 5px;">YOUR HEADLINE:</p>
+                    <p style="font-style: italic;" id="headlineDisplay"></p>
+                </div>
+
+                <!-- Core Systems -->
+                <div class="question-block">
+                    <h3>CORE SYSTEMS AFFECTED (+1 each):</h3>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="system-check" data-points="1" onchange="updateScore()"> Communications/Cell
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="system-check" data-points="1" onchange="updateScore()"> Power Grid
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="system-check" data-points="1" onchange="updateScore()"> Payments/Banks
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="system-check" data-points="1" onchange="updateScore()"> Emergency Services
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="system-check" data-points="1" onchange="updateScore()"> Fuel Access
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="system-check" data-points="1" onchange="updateScore()"> Supply Chain/Food
+                    </label>
+                </div>
+
+                <!-- Stress Amplifiers -->
+                <div class="question-block">
+                    <h3>STRESS AMPLIFIERS (+0.5 each):</h3>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="amplifier-check" data-points="0.5" onchange="updateScore()"> Lasted >12 hours
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="amplifier-check" data-points="0.5" onchange="updateScore()"> Multiple regions
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="amplifier-check" data-points="0.5" onchange="updateScore()"> Vague messaging
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="amplifier-check" data-points="0.5" onchange="updateScore()"> Repeating (7 days)
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="amplifier-check" data-points="0.5" onchange="updateScore()"> Bad weather too
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="amplifier-check" data-points="0.5" onchange="updateScore()"> Panic/shortages
+                    </label>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <div class="score-container">
+                    <div class="score-item" id="scoreDisplay">
+                        <div class="score-label">Collapse Score</div>
+                        <div class="score-value" id="scoreValue">0</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Total Points Possible</div>
+                        <div class="score-value" style="color: var(--text-secondary);">9</div>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="moveToScreen('screen-analysis')">GET ORACLE READING</button>
+                <button class="btn secondary" onclick="moveToScreen('screen-input')">BACK</button>
+            </div>
+        </div>
+
+        <!-- Screen 4: Analysis & Oracle -->
+        <div class="screen" id="screen-analysis">
+            <div class="oracle-box">
+                <div class="oracle-label">SYSTEM ANALYSIS COMPLETE</div>
+                <div class="oracle-title" id="oracleLevel">◈ READING ◈</div>
+                <div id="oracleLevelBadges" style="margin-bottom: 15px;"></div>
+                <div class="oracle-text" id="oracleMessage"></div>
+                <div class="oracle-action" id="oracleAction"></div>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--neon-cyan); margin-bottom: 20px;">THE THREE VIBE CHECKS</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--neon-lime); margin-bottom: 10px;">▸ ISOLATION vs INTERDEPENDENCE</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9em;">If it spreads across systems → Pattern emerging. If contained → Random event.</p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--neon-lime); margin-bottom: 10px;">▸ DID IT HIT TRUST INFRASTRUCTURE?</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9em;">Banks, hospitals, emergency response, food, fuel. If trust breaks → Collapse accelerates FAST.</p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--neon-lime); margin-bottom: 10px;">▸ IS IT REPEATING IN WAVES?</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9em;">Wave pattern = systemic weakness. Not random bad luck, but structural decline.</p>
+                </div>
+            </div>
+
+            <div class="card warning">
+                <h3 style="color: var(--neon-orange); margin-bottom: 15px;">THE CHEAT CODES</h3>
+                <div style="margin-bottom: 15px;">
+                    <p style="color: var(--neon-lime); margin-bottom: 8px;">🪩 CLIPBOARD REALITY TEST</p>
+                    <p style="font-size: 0.9em;">After outage, if people say "this is getting common" / "third time this month" / "never used to happen" → <strong>TIMELINE SHIFT MARKER</strong></p>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <p style="color: var(--neon-lime); margin-bottom: 8px;">🐍 THE SERPENT FACTOR</p>
+                    <p style="font-size: 0.9em;">No transparency, no root cause, no ETA → Temporary disruption turning into <strong>STRUCTURAL DECLINE</strong></p>
+                </div>
+                <div>
+                    <p style="color: var(--neon-lime); margin-bottom: 8px;">🕯️ THE 72-HOUR RULE</p>
+                    <p style="font-size: 0.9em;">If essentials disrupted for 72+ hours → Society enters different mode. People run out of meds, shelves empty, tempers change.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn" onclick="moveToScreen('screen-input')">DECODE ANOTHER EVENT</button>
+                <button class="btn secondary" onclick="resetDecoder()">RESTART</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>◈ THE FIRST SPARK ◈ Consciousness Technology Platform</p>
+            <p style="margin-top: 10px; font-size: 0.75em;">What if collapse awareness is just heightened consciousness?</p>
+            <p style="margin-top: 15px;"><a href="https://thefirstspark.shop">Visit The First Spark</a></p>
+        </div>
+    </div>
+
+    <script>
+        let currentScore = 0;
+        let currentHeadline = '';
+
+        function moveToScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function validateInput() {
+            const headline = document.getElementById('headlineInput').value.trim();
+            if (headline.length < 10) {
+                alert('Please enter a headline or event (minimum 10 characters)');
+                return;
+            }
+            currentHeadline = headline;
+            document.getElementById('headlineDisplay').textContent = headline;
+            moveToScreen('screen-scoring');
+        }
+
+        function updateScore() {
+            const systemChecks = document.querySelectorAll('.system-check:checked');
+            const amplifierChecks = document.querySelectorAll('.amplifier-check:checked');
+            
+            let score = 0;
+            systemChecks.forEach(check => {
+                score += parseFloat(check.dataset.points);
+            });
+            amplifierChecks.forEach(check => {
+                score += parseFloat(check.dataset.points);
+            });
+
+            currentScore = Math.round(score * 10) / 10; // Round to 1 decimal
+            document.getElementById('scoreValue').textContent = currentScore.toFixed(1);
+            
+            // Update progress bar (max is 9)
+            const progress = (currentScore / 9) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Update score display color
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            scoreDisplay.className = 'score-item';
+            if (currentScore >= 8) {
+                scoreDisplay.classList.add('active');
+                document.getElementById('scoreValue').style.color = 'var(--neon-magenta)';
+            } else if (currentScore >= 6) {
+                scoreDisplay.classList.add('active');
+                document.getElementById('scoreValue').style.color = 'var(--neon-orange)';
+            } else if (currentScore >= 4) {
+                scoreDisplay.classList.add('active');
+                document.getElementById('scoreValue').style.color = '#ffff00';
+            } else {
+                document.getElementById('scoreValue').style.color = 'var(--neon-lime)';
+            }
+        }
+
+        function getOracleReading() {
+            const oracles = {
+                0: {
+                    level: "NOISE",
+                    badge: "0",
+                    title: "Regular Internet Tuesday",
+                    message: "One app went down. Rest of the world works. This will be fixed within hours.",
+                    insight: "Translation: Not collapse. Just capitalism running on duct tape.",
+                    action: "Next time something fails, remember: systems are fragile. Pay attention."
+                },
+                1: {
+                    level: "FLICKER",
+                    badge: "1",
+                    title: "The Flicker",
+                    message: "One major provider hit or multi-region impact. News calls it 'nationwide.' Restores within 3-12 hours.",
+                    insight: "Translation: System stress. Not fatal, but the fault lines are showing.",
+                    action: "Watch if this repeats. One flicker is noise. Three in a month is a pattern."
+                },
+                2: {
+                    level: "SHUDDER",
+                    badge: "2",
+                    title: "The Shudder",
+                    message: "2+ systems fail at once (cell + payment, cloud + emergency services). Failures cascade. Fix takes 12-48 hours.",
+                    insight: "Translation: Okay now we're in the 'this could spread' zone.",
+                    action: "This is where you start seeing the real architecture. Systems aren't independent. They're tangled."
+                },
+                3: {
+                    level: "STACKED FAILURE",
+                    badge: "3",
+                    title: "Stacked Failure",
+                    message: "3+ essential systems hit together. People can't call 911, buy basics, access money, get fuel. Repairs take days.",
+                    insight: "Translation: This is collapse-phase behavior. The rules have shifted.",
+                    action: "If you see this, prepare. Not with fear. With clarity. Know your supply lines."
+                },
+                4: {
+                    level: "THE BREAK",
+                    badge: "4",
+                    title: "The Break",
+                    message: "Restoration is not clear. Martial language appears ('security event', 'incident response'). Supply lines freeze. Grid instability becomes normal.",
+                    insight: "Translation: The OS has changed. This isn't temporary.",
+                    action: "You are witnessing a timeline shift. Document it. Understand it. Adapt."
+                }
+            };
+
+            let level = 0;
+            
+            if (currentScore < 2) {
+                level = 0; // NOISE
+            } else if (currentScore < 4) {
+                level = 1; // FLICKER
+            } else if (currentScore < 6) {
+                level = 2; // SHUDDER
+            } else if (currentScore < 8) {
+                level = 3; // STACKED
+            } else {
+                level = 4; // THE BREAK
+            }
+
+            return oracles[level];
+        }
+
+        function generateLevelBadges() {
+            const levels = [
+                { score: 0, name: "NOISE", class: "level-0", min: 0, max: 2 },
+                { score: 1, name: "FLICKER", class: "level-1", min: 2, max: 4 },
+                { score: 2, name: "SHUDDER", class: "level-2", min: 4, max: 6 },
+                { score: 3, name: "STACKED", class: "level-3", min: 6, max: 8 },
+                { score: 4, name: "THE BREAK", class: "level-4", min: 8, max: 9 }
+            ];
+
+            let html = '';
+            levels.forEach(level => {
+                const isActive = currentScore >= level.min && currentScore < level.max;
+                html += `<span class="level-badge ${level.class}" style="${isActive ? 'box-shadow: 0 0 15px currentColor; background: currentColor; color: var(--dark-void);' : ''}">${level.name}</span>`;
+            });
+
+            return html;
+        }
+
+        function moveToAnalysis() {
+            const reading = getOracleReading();
+            
+            document.getElementById('oracleLevel').textContent = `◈ ${reading.level} ◈`;
+            document.getElementById('oracleLevelBadges').innerHTML = generateLevelBadges();
+            document.getElementById('oracleMessage').innerHTML = `<strong>${reading.title}</strong><br><br>${reading.message}<br><br><em style="color: var(--neon-cyan);">${reading.insight}</em>`;
+            document.getElementById('oracleAction').textContent = `⚡ ${reading.action}`;
+            
+            moveToScreen('screen-analysis');
+        }
+
+        function resetDecoder() {
+            currentScore = 0;
+            currentHeadline = '';
+            document.getElementById('headlineInput').value = '';
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.getElementById('scoreValue').textContent = '0';
+            document.getElementById('progressBar').style.width = '0%';
+            moveToScreen('screen-intro');
+        }
+
+        // Update the GET ORACLE READING button behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            const analysisBtn = document.querySelector('#screen-scoring .btn');
+            if (analysisBtn) {
+                analysisBtn.onclick = moveToAnalysis;
+            }
+        });
+    </script>
+</body>
+</html>
